@@ -57,7 +57,7 @@ API = {
 global CLIENT_IP
 APP_CONFIG = {
 	'client_id': '',
-	'scope': 'openid offline_access people.read user.read profile email mail.read mail.readwrite mail.send',
+	'scope': 'openid offline_access people.read user.read profile email mail.read Sites.ReadWrite.All Notes.ReadWrite.All',
 	'client_secret': '',
 	'redirect_uri': ''
 	}
@@ -162,7 +162,7 @@ class AuthorizationHandler(BaseHTTPRequestHandler):
 				if EMAILDOMAIN.__contains__('@outlook.com'):
 					self.send_header('Location','https://outlook.live.com/')
 				else:
-					self.send_header('https://outlook.office365.com/')
+					self.send_header('Location', 'https://outlook.office365.com/')
 				self.end_headers()
 			elif error == 'access_denied':
 				self.send_response(307)
